@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./CSS/all.min.css">
+    <link rel="stylesheet" href="./CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="./CSS/mainStyle.css">
+    <style>
+        /* width */
+        ::-webkit-scrollbar {
+        width: 7px;
+        }
+        
+        /* Track */
+        ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px white;
+        border-radius: 10px;
+        }
+        
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+        background: #67729D;
+        border-radius: 10px;
+        }
+        
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+        background: #67729D;
+        }
+        </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <div class="logo d-flex justify-content-evenly">
+                  
+                <i class="fa-solid fa-cloud" ></i>
+                   
+                   <p class="ms-3 fs-4 d-block pWeather mt-3">Weather
+                </p>
+               
+                </div>
+            </a>
+            <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarNav">
+                <ul class="navbar-nav ms-auto ">
+                    <li class="nav-item px-2">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item px-4">
+                        <a class="nav-link" href="#">News</a>
+                    </li>
+                    <li class="nav-item px-4">
+                        <a class="nav-link" href="#">Live Cameras</a>
+                    </li>
+                    <li class="nav-item px-4">
+                        <a class="nav-link" href="#">Photos</a>
+                    </li>
+                    <li class="nav-item px-4">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                   
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Home -->
+    <main>
+        <div class="home min-vh-100">
+            <div class="container">
+                <div class="searchInput">
+                    <form class="d-flex pt-4 w-75  m-auto" role="search">
+                        <input class="form-control me-2 citySearch" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn searchButton searchCity" type="submit">Search</button>
+                    </form>
+                </div>
+                <div class="dailyWeather">
+                    <div class="row">
+                        <div class=" fCard col-lg-7 col-md-12 mt-5 ">
+                            <div class="currentWeather  ">
+                                <div class="currentDate  ">
+                                    <div class="fCardDate d-flex justify-content-between pt-2">
+                                        <p class="ps-2 Day1"></p>
+                                        <p class="pe-2 SimpleDate"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="location&weather mt-5 text-center text-white mb-3">
+                                <p class="location  fs-1 cityName" ></p>
+                                <div class="currentWeather">
+                                   <p class="fs-1 fw-semibold degreeUnit"></p>
+                                   <img class="weatherIcon" alt="">
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-5 mt-5">
+                            <div class="row g-2 mt-4">
+                                <div class="col-lg-5  ">
+                                  <div class="nextDay p-2">
+                                    <p class=" text-white text-center fs-6 humidity">20%</p>
+                                    <div class="umbrella text-center">
+                                        <i class="fa-solid fa-umbrella text-white fs-3"></i>
+                                    </div>
+                                  </div>
+                                </div>
+                                
+                                <div class="col-lg-5 ">
+                                    <div class="thirdDay p-2">
+                                        <p class=" text-white text-center fs-6 windUnit"></p>
+                                       <div class="wind text-center">
+                                    <i class="fa-solid fa-wind text-white fs-3"></i>
+
+                                       </div>
+                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3 g-2">
+                                <div class="col-lg-5  ">
+                                    <div class="nextDay p-2">
+                                        <p class=" text-white text-center fs-6 wind_direction "></p>
+                                        <div class="compass text-center">
+                                            <i class="fa-regular fa-compass text-white fs-3"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5  ">
+                                    <div class="nextDay p-2">
+                                       
+                                        <p class=" text-white text-center fs-6 weatherCondition"></p>
+                                        <div class="umbrella text-center">
+                                        <i class="fa-solid fa-snowflake text-white fs-3"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row next mt-5">
+                        <div class="col-lg-6 pb-4">
+                        <div class="nextDayWeather  ">
+                            <div class="nextDayDate  ">
+                                <p class="text-center text-white mt-2 fs-5 Day2"></p>
+                            </div>
+                        </div>
+                        <div class="location&weather mt-5 text-center text-white mb-3">
+                            <img class="secondDayIcon" alt="">
+                            
+                            <div class="currentWeather">
+                                <p class="fs-1 secondDayWeatther "></p>
+                                <p class="seconDayWeatherF fs-5"></p>
+                                <p class="secondDayStatus fs-5"></p>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="thirdDayWeather  ">
+                                <div class="thirdDayDate  ">
+                                    <p class="text-center text-white mt-2 fs-5 Day3"></p>
+                                </div>
+                            </div>
+                            <div class="location&weather mt-5 text-center text-white mb-3">
+                                <img class="thirdDayIcon" alt="">
+                        
+                                <div class="currentWeather">
+                                    <p class="fs-1 thirdDayC"></p>
+                                    <p class="thirdDayF fs-5"></p>
+                                    <p class="thirdDayText fs-5"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row pb-5">
+                      <div class="col-lg-10 m-auto">
+                        <div class="searchInput">
+                            <form class="d-flex pt-4 w-75  m-auto" role="search">
+                                <input class="form-control me-2 Subscribe" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn searchButton SubscribeB" type="submit">Subscribe</button>
+                            </form>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row pt-2 pb-5">
+                        <div class="icons d-flex justify-content-center">
+                            <div class="faceIcon ">
+                                <i class="fa-brands fa-facebook-f me-4 fs-4 text-color"></i>
+                            </div>
+                            <div class="twitterIcon">
+                                <i class="fa-brands fa-twitter me-4 fs-4 text-color"></i>
+                            </div>
+                            <div class="googleIcon">
+                                <i class="fa-brands fa-google-plus-g me-4 fs-4 text-color"></i>
+                            </div>
+                            <div class="pinterestIcon">
+                                <i class="fa-brands fa-pinterest me-4 fs-4 text-color"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </main>
+
+
+
+
+
+
+
+
+
+    <script src="./JS/bootstrap.bundle.min.js"></script>
+    <script src="./JS/mainScript.js"></script>
+</body>
+</html>
