@@ -50,6 +50,8 @@ body {
     border: 2px solid #A367B1;
     border-radius: 10px;
     color: #E0AED0;
+    padding: 0 10px;
+    font-size: 15px;
 }
 
 .searchButton:hover {
