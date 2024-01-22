@@ -1,4 +1,5 @@
 // Global Selection
+
 let cityName = document.querySelector(".cityName");
 let degreeUnit = document.querySelector(".degreeUnit");
 let weatherIcon = document.querySelector(".weatherIcon");
@@ -22,6 +23,11 @@ let Day2 = document.querySelector(".Day2");
 let Day3 = document.querySelector(".Day3");
 let SimpleDate = document.querySelector(".SimpleDate");
 let myCityName;
+
+
+
+// **Function getting  (latitude & latitude)
+
 // Check if the browser supports the Geolocation API
 if (navigator.geolocation) {
   // Get the current position
@@ -47,7 +53,10 @@ function errorCallback(error) {
   // Handle errors such as user denying location access or other issues
   console.error("Error getting location: " + error.message);
 }
-//***************************************************************************************************
+
+//------------------------------------------------------------------------------------------------
+
+// **Function of getting My City Name
 
 // Replace 'YOUR_API_KEY' with your actual API key from OpenCage
 
@@ -79,7 +88,9 @@ function getCityName(latitude, longitude) {
     });
 }
 
-// Gett Date
+
+
+// **Gett Date
 const Months = [
   "January",
   "February",
@@ -111,6 +122,7 @@ let day1 = Days[Time.getDay()];
 Day1.innerHTML = day1;
 
 // Get Date of Day2
+
 if (Time.getDay() == 6) {
   let day2 = Days[0];
   Day2.innerHTML = day2;
@@ -119,7 +131,9 @@ if (Time.getDay() == 6) {
   Day2.innerHTML = day2;
 }
 
+
 // Get Third Day
+
 if (Time.getDay() == 5) {
   let day3 = Days[0];
   Day3.innerHTML = day3;
@@ -138,8 +152,11 @@ if (Time.getDay() == 5) {
 
 SimpleDate.innerHTML = Time.getDate() + Months[Time.getMonth()];
 
+
+// ** Function of getting default Weather  or ur city weather
+
 async function getWeather() {
-  var response = await fetch(
+  var response = await fetch( 
     `https://api.weatherapi.com/v1/forecast.json?key=1b62e163b4024e0e81a193317240601&q=${
       myCityName == undefined ? "cairo" : myCityName
     }&days=3&aqi=no&alerts=no`
@@ -178,7 +195,9 @@ async function getWeather() {
 }
 getWeather();
 
-// GeoLocation
+
+// GeoLocation ==> ** Function of getting City Search
+
 citySearch.addEventListener("keyup", getCityWeather);
 citySearch.addEventListener("blur", getCityWeather);
 searchCity.addEventListener("click", getCityWeather);
