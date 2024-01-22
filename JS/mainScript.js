@@ -24,8 +24,6 @@ let Day3 = document.querySelector(".Day3");
 let SimpleDate = document.querySelector(".SimpleDate");
 let myCityName;
 
-
-
 // **Function getting  (latitude & latitude)
 
 // Check if the browser supports the Geolocation API
@@ -88,8 +86,6 @@ function getCityName(latitude, longitude) {
     });
 }
 
-
-
 // **Gett Date
 const Months = [
   "January",
@@ -131,7 +127,6 @@ if (Time.getDay() == 6) {
   Day2.innerHTML = day2;
 }
 
-
 // Get Third Day
 
 if (Time.getDay() == 5) {
@@ -152,11 +147,10 @@ if (Time.getDay() == 5) {
 
 SimpleDate.innerHTML = Time.getDate() + Months[Time.getMonth()];
 
-
 // ** Function of getting default Weather  or ur city weather
 
 async function getWeather() {
-  var response = await fetch( 
+  var response = await fetch(
     `https://api.weatherapi.com/v1/forecast.json?key=1b62e163b4024e0e81a193317240601&q=${
       myCityName == undefined ? "cairo" : myCityName
     }&days=3&aqi=no&alerts=no`
@@ -194,7 +188,6 @@ async function getWeather() {
     FinalResponse.forecast.forecastday[2].day.condition.text;
 }
 getWeather();
-
 
 // GeoLocation ==> ** Function of getting City Search
 
