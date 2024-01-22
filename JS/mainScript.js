@@ -38,20 +38,16 @@ function successCallback(position) {
 
   console.log("Latitude: " + latitude);
   console.log("Longitude: " + longitude);
-  getCityName(latitude,longitude)
+  getCityName(latitude, longitude);
   // You can use these coordinates as needed in your application
-
 }
 
 // Error callback function
 function errorCallback(error) {
   // Handle errors such as user denying location access or other issues
   console.error("Error getting location: " + error.message);
-
 }
 //***************************************************************************************************
-
-
 
 // Replace 'YOUR_API_KEY' with your actual API key from OpenCage
 
@@ -62,59 +58,26 @@ function getCityName(latitude, longitude) {
 
   // Make the API request
   fetch(apiUrl)
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => response.json())
+    .then((data) => {
       // Check if the response contains results
       if (data.results && data.results.length > 0) {
         // Extract the city name from the results
         let cityName = data.results[0].components.city;
-        if(cityName==undefined)
-        {
-          cityName=data.results[0].components.state
+        if (cityName == undefined) {
+          cityName = data.results[0].components.state;
         }
         console.log("City Name: " + JSON.stringify(data.results[0].components));
-        myCityName=cityName;
-      getWeather()
+        myCityName = cityName;
+        getWeather();
       } else {
         console.error("No results found for the given coordinates.");
       }
     })
-    .catch(error => {
+    .catch((error) => {
       console.error("Error fetching data from OpenCage API:", error);
     });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Gett Date
 const Months = [
@@ -160,26 +123,26 @@ if (Time.getDay() == 6) {
 if (Time.getDay() == 5) {
   let day3 = Days[0];
   Day3.innerHTML = day3;
-  console.log(day3 , "5")
+  console.log(day3, "5");
 } else if (Time.getDay() == 6) {
   let day3 = Days[1];
   Day3.innerHTML = day3;
-    console.log(day3, "6");
+  console.log(day3, "6");
 } else {
   let day3 = Days[Time.getDay() + 2];
   Day3.innerHTML = day3;
-    console.log(day3, "7");
+  console.log(day3, "7");
 }
-
 
 // Get Current Months
 
 SimpleDate.innerHTML = Time.getDate() + Months[Time.getMonth()];
- 
 
 async function getWeather() {
   var response = await fetch(
-    `https://api.weatherapi.com/v1/forecast.json?key=1b62e163b4024e0e81a193317240601&q=${myCityName==undefined?"cairo":myCityName}&days=3&aqi=no&alerts=no`
+    `https://api.weatherapi.com/v1/forecast.json?key=1b62e163b4024e0e81a193317240601&q=${
+      myCityName == undefined ? "cairo" : myCityName
+    }&days=3&aqi=no&alerts=no`
   );
   var FinalResponse = await response.json();
   // Get First Day
@@ -213,7 +176,7 @@ async function getWeather() {
   thirdDayText.innerHTML =
     FinalResponse.forecast.forecastday[2].day.condition.text;
 }
-  getWeather();
+getWeather();
 
 // GeoLocation
 citySearch.addEventListener("keyup", getCityWeather);
@@ -225,7 +188,7 @@ async function getCityWeather() {
   );
   var FinalResponse = await response.json();
   // Get First Day
- 
+
   cityName.innerHTML = FinalResponse.location.name;
 
   degreeUnit.innerHTML = `${FinalResponse.current.temp_c}<p class="d-inline"><sup class="supC">o</sup></sup>C</p>`;
